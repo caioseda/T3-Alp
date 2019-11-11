@@ -6,7 +6,7 @@ Employee= require("./Employee.js")
 
 //moment = require("moment")
 
-let Transform = class Transform{
+class Transform{
 
     Transform(entries) {
         //console.log(entries)
@@ -43,7 +43,7 @@ let Transform = class Transform{
             result.push(w);
         }
         console.info("Processo de transformação finalizado. "+ result.length+" elementos transformados")
-        //return result;
+        return result;
     }
 }
 module.exports.Transform = Transform;
