@@ -1,46 +1,49 @@
+entry_raw = require("./entry_raw.js")
+Time= require("./TimeEntry.js")
+Extractor= require("./Extractor.js")
+Work= require("./WorkDay.js")
+Employee= require("./Employee.js")
+
+//moment = require("moment")
+
 let Transform = class Transform{
 
-}
-    
-
-    function Transform(entries) {
+    Transform(entries) {
+        //console.log(entries)
         // resolver interações entre classes
         var result=[]
         var employees=[]
 
-        for (i=0; i< entries.length; i++) {
+        for (let i=0; i< entries.length; i++) {
+            //console.log(entries[i])
+            const employeeString = entries[i].empregado;
+            const dateString= entries[i].dia_trabalho;
+            const hoursString= entries[i].horas_trabalho;
+            // console.log("employee " +employeeString)
+            // console.log("data " +dateString)
+            // console.log("hours " +hoursString)
 
-            employeeString= TimeEntry.employee();
-            dateString= TimeEntry.date();
-            hoursString= TimeEntry.hours();
-
-            for (j=0; j< employess.length; j++){
+            let employee;
+            for (let j=0; j< employees.length; j++){
                 if(employees[j] == employeeString){
                     employee = employees[j];
                 }
             }
 
             if(employee == null){
-                employee = new employee(employeeString);
-                employees.add(employeeString, employee);
+                employee = new Employee.employee(employeeString);
+                employees.push(employeeString, employee);
             }
             
-            //resolver data
-            split = dateString.split("/");
-            
+            //resolver date
 
-            var punches= [];
-            punchesArray = hoursString.split(" ");
-
-            for (x=0; x< punchesArray.length; x++) {
-                punch = 
-                punches.add(punch);
-    
-            }
-            workDay = new WorkDay(employee, date, punches);
-            result.add(workDay);
+            const punches = hoursString.split(" ");
+            var w = new Work.WorkDay(employee, dateString, punches);
+            // console.log(w)
+            result.push(w);
         }
-
-        return result;
+        console.info("Processo de transformação finalizado. "+ result.length+" elementos transformados")
+        //return result;
     }
 }
+module.exports.Transform = Transform;

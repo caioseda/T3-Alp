@@ -4,7 +4,6 @@ let TimeEntry = class TimeEnty{
       this.date = this.date;
       this.hours = this.hours;
     }
-
-
-
   };
+
+  module.exports.TimeEntry = TimeEntry;
